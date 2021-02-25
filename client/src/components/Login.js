@@ -42,7 +42,7 @@ const Login = ({ history }) => {
                     <label >Password</label>
                     <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} />
                 </div>
-                <button type="submit" onClick={loginHandler} className="btn btn-primary mx-auto">Login</button>
+                <button type="submit" disabled={!email.trim().length || !password.trim().length} onClick={loginHandler} className="btn btn-primary mx-auto">Login</button>
                 {error && <div className="alert alert-danger mt-3" id="alert" role="alert">
                     {error}
                 </div>}

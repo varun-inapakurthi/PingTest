@@ -11,12 +11,12 @@ export const addUrl = (url, expectedResponseTime) => async (dispatch, getState) 
             Authorization: `Bearer ${userInfo.token}`
         }
     }
-    await axios.post('http://localhost:5001/api/url', { url, expectedResponseTime }, config);
+    await axios.post('/api/url', { url, expectedResponseTime }, config);
 
     dispatch({
         type: USER_PROFILE_REQUEST
     })
-    const { data } = await axios.get('http://localhost:5001/api/user', config);
+    const { data } = await axios.get('/api/user', config);
     dispatch({
         type: USER_PROFILE_SUCCESS,
         payload: data
@@ -39,7 +39,7 @@ export const getUrlData = (id) => async (dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-        let { data } = await axios.get('http://localhost:5001/api/url/' + id, config);
+        let { data } = await axios.get('/api/url/' + id, config);
         dispatch({
             type: URL_SUCCESS,
             payload: data
@@ -71,12 +71,12 @@ export const deleteUrl = (id) => async (dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-        await axios.delete('http://localhost:5001/api/url/' + id, config);
+        await axios.delete('/api/url/' + id, config);
 
         dispatch({
             type: USER_PROFILE_REQUEST
         })
-        const { data } = await axios.get('http://localhost:5001/api/user', config);
+        const { data } = await axios.get('/api/user', config);
         dispatch({
             type: USER_PROFILE_SUCCESS,
             payload: data

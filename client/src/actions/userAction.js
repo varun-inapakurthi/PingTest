@@ -13,7 +13,7 @@ export const login = (email, password) => async (dispatch) => {
                 'Content-type': 'application/json'
             }
         }
-        const { data } = await axios.post('http://localhost:5001/api/user/login', { email, password }, config);
+        const { data } = await axios.post('/api/user/login', { email, password }, config);
         dispatch({
             type: USER_LOGIN_SUCCESS,
             payload: data
@@ -41,7 +41,7 @@ export const register = (name, email, password) => async (dispatch) => {
             }
         }
 
-        const { data } = await axios.post('http://localhost:5001/api/user/signin', { name, email, password }, config);
+        const { data } = await axios.post('/api/user/signin', { name, email, password }, config);
 
 
         dispatch({
@@ -80,7 +80,7 @@ export const getProfile = () => async (dispatch, getState) => {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
-        const { data } = await axios.get('http://localhost:5001/api/user', config);
+        const { data } = await axios.get('/api/user', config);
         dispatch({
             type: USER_PROFILE_SUCCESS,
             payload: data
