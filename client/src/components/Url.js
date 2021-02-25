@@ -22,7 +22,8 @@ const Url = ({ match, history }) => {
         dispatch(getUrlData(id))
     }, [dispatch, id])
 
-    let { urlData } = useSelector(state => state.urlData);
+    let { urlData, loading } = useSelector(state => state.urlData);
+    console.log(loading)
     return (
         <>
             {urlData && <>
@@ -65,6 +66,9 @@ const Url = ({ match, history }) => {
                             ))}
                         </tbody>
                     </table>
+                    {loading && <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>}
                 </div>}
 
 

@@ -7,7 +7,7 @@ import UrlModal from "./UrlModal";
 import { Link } from 'react-router-dom'
 
 const AllUrl = () => {
-    let { userData } = useSelector(state => state.userData)
+    let { userData, loading } = useSelector(state => state.userData)
 
     let dispatch = useDispatch()
     useEffect(() => {
@@ -19,6 +19,7 @@ const AllUrl = () => {
     }
     return (
         <div className="container align-items-center justify-content-between">
+
 
             {userData?.urls?.length > 0 ? <div>
                 <div className="m-5">
@@ -63,6 +64,9 @@ const AllUrl = () => {
                         {/* <button className="btn btn-primary" onClick={setUrlHandler}>Add Url</button> */}
                         <UrlModal />
                     </div>
+                    {loading && <div className="spinner-border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </div>}
                 </div>}
         </div>
     );

@@ -6,7 +6,7 @@ import AllUrl from "./AllUrl";
 const Home = ({ history }) => {
 
 
-    let { userInfo } = useSelector(state => state.user)
+    let { userInfo, loading } = useSelector(state => state.user)
 
     let dispatch = useDispatch()
 
